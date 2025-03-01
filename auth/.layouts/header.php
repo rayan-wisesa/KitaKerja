@@ -1,3 +1,18 @@
+<?
+session_start(); // Mulai session
+//ambil notifikasi jika ada ,kemudian hapus dari session
+$notification = $_SESSION['notification'] ?? null;
+if($notification){
+    unset($_SESSION['notification']);
+}
+    if (isset($_SESSION['username']) || isset($_SESSION['email'])) {
+      $_SESSION['notification'] = [
+        'type' => 'danger',
+        'message' => 'silahkan lougout terlebih dahulu'
+      ];
+      header("Location: ../dashboard.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
