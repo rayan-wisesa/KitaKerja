@@ -13,19 +13,15 @@
     <form action="register_process.php" class="mb-3" method="POST">
       <div class="mb-3">
         <label for="username" class="form-label">Username</label>
-        <input type="text" class="form-control" name="username" placeholder="Masukkan Username" autofocus/>
+        <input type="text" class="form-control" name="username" placeholder="Masukkan Username" autofocus required />
       </div>
       <div class="mb-3">
-        <label for="email" class="form-label">Nama</label>
-        <input type="text" class="form-control" name="name" placeholder="Masukkan Nama" />
+        <label for="name" class="form-label">Nama</label>
+        <input type="text" class="form-control" name="name" placeholder="Masukkan Nama" required />
       </div>
-      <div class="mb-3 form-password-toggle">
-        <label class="form-label" for="password">Password</label>
-        <div class="input-group input-group-merge">
-          <input type="password" class="form-control" name="password"
-          placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" />
-          <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
-        </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" name="email" placeholder="Masukkan Email" required />
       </div>
       <button class="btn btn-primary d-grid w-100">Daftar</button>
     </form>
