@@ -6,7 +6,7 @@
     <div class="app-brand justify-content-center">
       <a href="index.html" class="app-brand-link gap-2">
         <span class="app-brand-logo demo"></span>
-        <span class="app-brand-text demo text-uppercase fw-bolder">IdeKreatif</span>
+        <span class="app-brand-text demo fw-bolder">kitakerja</span>
       </a>
     </div>
     <!-- /Logo -->
@@ -27,7 +27,7 @@
           <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
         </div>
       </div>
-      <button class="btn btn-primary d-grid w-100">Daftar</button>
+      <button class="btn btn-dark d-grid w-100">Daftar</button>
     </form>
     <p class="text-center">
       <span>Sudah memiliki akun?</span><a href="login.php"><span> Masuk</span></a>
