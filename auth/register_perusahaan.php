@@ -10,14 +10,14 @@
       </a>
     </div>
     <!-- /Logo -->
-    <form action="register_process.php" class="mb-3" method="POST">
+    <form action="register_perusahaan_process.php" class="mb-3" method="POST">
       <div class="mb-3">
-        <label for="username" class="form-label">Username</label>
-        <input type="text" class="form-control" name="username" placeholder="Masukkan Username" autofocus/>
+        <label for="nama_perusahaan" class="form-label">Nama Perusahaan</label>
+        <input type="text" class="form-control" name="nama_perusahaan" placeholder="Masukkan Nama Perusahaan" autofocus/>
       </div>
       <div class="mb-3">
-        <label for="email" class="form-label">Nama</label>
-        <input type="text" class="form-control" name="name" placeholder="Masukkan Nama" />
+        <label for="email" class="form-label">Email</label>
+        <input type="text" class="form-control" name="email" placeholder="Masukkan Email" />
       </div>
       <div class="mb-3 form-password-toggle">
         <label class="form-label" for="password">Password</label>
