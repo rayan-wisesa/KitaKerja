@@ -2,7 +2,7 @@
 session_start();
 
 $id = $_SESSION["perusahaan_id"];
-$name = $_SESSION["nama_perusahaan"];
+$name = $_SESSION["username"];
 $role = $_SESSION["role"];
 // Ambil notifikasi jika ada, kemudian hapus dari sesi
 $notification = $_SESSION['notification'] ?? null;
