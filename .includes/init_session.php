@@ -14,6 +14,7 @@ if (empty($_SESSION["username"]) || empty($_SESSION["role"])) {
         'type' => 'danger',
         'message' => 'Silahkan Login Terlebih Dahulu!'
     ];
+    //Header masih salah. link ke auth/perusahaan
     header ('Location: ./auth/login.php');
     exit();
 }
