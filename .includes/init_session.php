@@ -1,23 +1,6 @@
 <?php
 session_start();
 
-<<<<<<< HEAD
-$username =$_SESSION['username'];
-$email =$_SESSION['email'];
-
-$notification = $_SESSION['notification'] ?? null;
-if($notification){
-    unset($_SESSION['notification']);
-}
-    if (isset($_SESSION['username']) || isset($_SESSION['email'])) {
-      $_SESSION['notification'] = [
-        'type' => 'danger',
-        'message' => 'silahkan login terlebih dahulu'
-      ];
-      header("Location: ./auth/login.php");
-}
-?>
-=======
 $id = $_SESSION["perusahaan_id"];
 $name = $_SESSION["username"];
 $role = $_SESSION["role"];
@@ -31,7 +14,7 @@ if (empty($_SESSION["username"]) || empty($_SESSION["role"])) {
         'type' => 'danger',
         'message' => 'Silahkan Login Terlebih Dahulu!'
     ];
+    //Header masih salah. link ke auth/perusahaan
     header ('Location: ./auth/login.php');
     exit();
 }
->>>>>>> 5e5ebd041ccc46bbb8dac483892299e20ece53a5
