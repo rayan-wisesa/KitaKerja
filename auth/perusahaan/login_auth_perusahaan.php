@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once("../../../config.php");
+require_once("./../../config.php");
 if ($_SERVER["REQUEST_METHOD"]== "POST") {
     $email = $_POST["email"];
     $password = $_POST["password"];
@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"]== "POST") {
                 'type' => 'primary',
                 'message' =>'selamat datang kembali!'
             ];
-            header('location: ../../../dashboard.php');
+            header('location: ./../../dashboard.php');
             exit();
         } else {
                 $_SESSION['notification'] = [
