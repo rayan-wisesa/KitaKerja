@@ -24,13 +24,13 @@ if ($_SERVER["REQUEST_METHOD"]== "POST") {
         } else {
                 $_SESSION['notification'] = [
                     'type' => 'danger',
-                    'message' => 'username atau password salah!'
+                    'message' => 'email atau password salah!'
             ];
         }
         }else{
             $_SESSION['notification'] = [
                 'type' => 'danger',
-                    'message' => 'username atau password salah !'
+                    'message' => 'email atau password salah !'
             ];
         }
         header('Location: login.php');
