@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"]== "POST") {
                     'message' => 'Email atau password salah!'
             ];
         }
-        header('Location: login.php');
+        header('Location: login_perusahaan.php');
         exit();
     }
     $conn->close();
