@@ -16,7 +16,7 @@ $userId = isset($_SESSION['user_id']) ? intval($_SESSION['user_id']) : 0;
 <div class="container-xxl flex-grow-1 container-p-y">
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
-            <h4>Semua Postingan</h4>
+            <h4>Semua Perkerjaan</h4>
         </div>
         <div class="card-body">
             <div class="table-responsive text-nowrap">
@@ -24,9 +24,7 @@ $userId = isset($_SESSION['user_id']) ? intval($_SESSION['user_id']) : 0;
                     <thead>
                         <tr class="text-center">
                             <th width="50px">#</th>
-                            <th>Judul Post</th>
-                            <th>Penulis</th>
-                            <th>Kategori</th>
+                            <th>nama pekerjaan</th>
                             <th width="150px">Pilihan</th>
                         </tr>
                     </thead>
@@ -34,25 +32,17 @@ $userId = isset($_SESSION['user_id']) ? intval($_SESSION['user_id']) : 0;
                     <?php
                     $index = 1;
                         $userId = intval($userId); // Menghindari SQL Injection
-                        $query = "SELECT lamaran.*, 
-                        pelamar.nama_pelamar AS pelamar_nama, 
-                        pekerjaan.nama_pekerjaan AS pekerjaan_nama, 
-                        perusahaan.nama_perusahaan AS perusahaan_nama
+                        $query = "SELECT pekerjaan.nama_pekerjaan, lamaran.*
                             FROM lamaran
-                            INNER JOIN pelamar ON lamaran.pelamar_id = pelamar.pelamar_id
                             INNER JOIN pekerjaan ON lamaran.pekerjaan_id = pekerjaan.pekerjaan_id
-                            LEFT JOIN perusahaan ON pekerjaan.nama_perusahaan = perusahaan.id_perusahaan
-                            WHERE pelamar.pelamar_id = $userId";
-
-$exec = mysqli_query($conn, $query);
-
-while ($lamaran = mysqli_fetch_assoc($exec)) :
+                            WHERE lamaran.pelamar_id = $userId";
+                            $exec = mysqli_query($conn, $query);
+                            while ($lamaran = mysqli_fetch_assoc($exec)) :
 ?>
 
                         <tr>
                             <td class="text-center"><?= $index++; ?></td>
                             <td><?= htmlspecialchars($lamaran['pekerjaan_nama']); ?></td>
-                            <td><?= htmlspecialchars($lamaran['pelamar_nama']); ?></td>
                             <td><?= htmlspecialchars($lamaran['perusahaan_nama'] ?? 'Tidak ada kategori'); ?></td>
                             <td>
                                 <div class="dropdown">
