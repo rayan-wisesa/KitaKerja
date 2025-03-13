@@ -10,7 +10,7 @@
     </div>
     <!-- /Logo -->
     <h4 class="mb-2">Selamat datang di kitakerja</h4>
-    <form class="mb-3" action="login_auth.php" method="POST">
+    <form class="mb-3" action="login_perusahaan_auth.php" method="POST">
       <div class="mb-3">
         <label class="form-label">Username</label>
         <input type="text" class="form-control" name="username"
