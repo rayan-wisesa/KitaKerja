@@ -32,9 +32,7 @@ $userId = isset($_SESSION['user_id']) ? intval($_SESSION['user_id']) : 0;
                     <?php
                     $index = 1;
                         $userId = intval($userId); // Menghindari SQL Injection
-                        $query = "SELECT pekerjaan.nama_pekerjaan, lamaran.*
-                            FROM lamaran
-                            INNER JOIN pekerjaan ON lamaran.pekerjaan_id = pekerjaan.pekerjaan_id
+                        $query = "SELECT pekerjaan.nama_pekerjaan, 
                             WHERE lamaran.pelamar_id = $userId";
                             $exec = mysqli_query($conn, $query);
                             while ($lamaran = mysqli_fetch_assoc($exec)) :
