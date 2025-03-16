@@ -33,9 +33,11 @@ include '.includes/toast_notification.php';
                             $index = 1; // Variabel untuk nomor urut
                             /* Query untuk mengambil data dari tabel 
                              posts, users, dan categories */
-                            $query = "SELECT pekerjaan.nama_pekerjaan, perusahaan.nama_perusahaan, pekerjaan.alamat
-                            FROM pekerjaan pekerjaan
-                            JOIN perusahaan perusahaan ON pekerjaan.perusahaan_id = perusahaan.perusahaan_id";
+                            $query = "SELECT 
+                                            *
+                                        FROM pekerjaan pekerjaan
+                                        JOIN perusahaan perusahaan 
+                                        ON pekerjaan.perusahaan_id = perusahaan.perusahaan_id";
                             // Eksekusi query
                             $exec = mysqli_query($conn, $query);
 
