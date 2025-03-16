@@ -44,7 +44,6 @@ include '.includes/toast_notification.php';
                                     <td><?= $jobs['nama_pekerjaan']; ?></td>
                                     <td><?= $jobs['nama_perusahaan']; ?></td>
                                     <td><?= $jobs['alamat']; ?></td>
-                                    <td>
                                         <div class=dropdown>
                                             <!-- Tombol dropdown untuk Pilihan -->
                                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
