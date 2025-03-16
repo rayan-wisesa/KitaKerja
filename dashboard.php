@@ -24,6 +24,7 @@ include '.includes/toast_notification.php';
                                 <th>Nama Pekerjaan</th>
                                 <th>Perusahaan</th>
                                 <th>Alamat</th>
+                                <th width="150px">Pilihan</th>
                             </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
@@ -45,7 +46,7 @@ include '.includes/toast_notification.php';
                                     <td><?= $jobs['nama_pekerjaan']; ?></td>
                                     <td><?= $jobs['nama_perusahaan']; ?></td>
                                     <td><?= $jobs['alamat']; ?></td>
-                                        <div class=dropdown>
+                                    <td>    <div class=dropdown>
                                             <!-- Tombol dropdown untuk Pilihan -->
                                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
                                                 <i class="bx bx-dots-vertical-rounded"></i>
