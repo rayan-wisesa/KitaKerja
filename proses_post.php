@@ -16,9 +16,8 @@ if (isset($_POST['simpan'])) {
     $umur = $_POST["umur"];
     $pendidikan = $_POST["pendidikan"];
     $alamat = $_POST["alamat"];
-    $nama_perusahaan = $_SESSION["nama_perusahaan"];
 
-        $query = "INSERT INTO pekerjaan (nama_pekerjaan, nama_perusahaan, gaji, umur, pendidikan, alamat, tanggal_post) VALUES ('$jobtitle','$nama_perusahaan', $gaji , $umur ,'$pendidikan','$alamat', NOW())";
+        $query = "INSERT INTO pekerjaan (nama_pekerjaan, perusahaan_id, gaji, umur, pendidikan, alamat, tanggal_post) VALUES ('$jobtitle','$id', $gaji , $umur ,'$pendidikan','$alamat', NOW())";
         if ($conn->query($query) === TRUE) {
             // Notifikasi berhasil jika postingan berhasil ditambahkan
             $_SESSION['notification'] = [
