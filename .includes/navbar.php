@@ -26,7 +26,6 @@ navbar-detached align-items-center bg-navbar-theme" id="layout-navbar">
                 </div>
                 <div class="flex-grow-1">
                   <span class="fw-semibold d-block"><?php echo $name; ?></span>
-                  <small class="text-muted"><?php echo $role; ?></small>
                 </div>
               </div>
             </a>
