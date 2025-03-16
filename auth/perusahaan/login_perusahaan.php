@@ -12,9 +12,9 @@
     <h4 class="mb-2">Selamat datang di kitakerja</h4>
     <form class="mb-3" action="login_perusahaan_auth.php" method="POST">
       <div class="mb-3">
-        <label class="form-label">Username</label>
-        <input id="email" type="text" class="form-control" name="username"
-          placeholder="Masukkan username anda" autofocus required />
+        <label class="form-label">Email</label>
+        <input id="email" type="text" class="form-control" name="email"
+          placeholder="Masukkan email anda" autofocus required />
       </div>
       <div class="mb-3 form-password-toggle">
         <div class="d-flex justify-content-between">
@@ -32,7 +32,7 @@
       </div>
     </form>
     <p class="text-center">
-      <span>Belum punya akun?</span><a href="register.php"><span> Daftar</span></a>
+      <span>Belum punya akun?</span><a href="register_perusahaan.php"><span> Daftar</span></a>
     </p>
   </div>
 </div>
