@@ -24,6 +24,7 @@ include '.includes/toast_notification.php';
                                 <th>Nama Pekerjaan</th>
                                 <th>Perusahaan</th>
                                 <th>Alamat</th>
+                                <th width="150px">Pilihan</th>
                             </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
@@ -32,8 +33,9 @@ include '.includes/toast_notification.php';
                             $index = 1; // Variabel untuk nomor urut
                             /* Query untuk mengambil data dari tabel 
                              posts, users, dan categories */
-                            $query = "SELECT * from pekerjaan";
-                            // Query tersebut menunjukkan SEMUA pekerjaan yang dipost oleh SEMUA perusahaan. masih eksperimen
+                            $query = "SELECT pekerjaan.nama_pekerjaan, perusahaan.nama_perusahaan, pekerjaan.alamat
+                            FROM pekerjaan pekerjaan
+                            JOIN perusahaan perusahaan ON pekerjaan.perusahaan_id = perusahaan.perusahaan_id";
                             // Eksekusi query
                             $exec = mysqli_query($conn, $query);
 
@@ -45,6 +47,7 @@ include '.includes/toast_notification.php';
                                     <td><?= $jobs['nama_pekerjaan']; ?></td>
                                     <td><?= $jobs['nama_perusahaan']; ?></td>
                                     <td><?= $jobs['alamat']; ?></td>
+                                    <td>
                                         <div class=dropdown>
                                             <!-- Tombol dropdown untuk Pilihan -->
                                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
