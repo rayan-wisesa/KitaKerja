@@ -33,6 +33,7 @@ include '.includes/toast_notification.php';
                             /* Query untuk mengambil data dari tabel 
                              posts, users, dan categories */
                             $query = "SELECT * from pekerjaan";
+                            // Query tersebut menunjukkan SEMUA pekerjaan yang dipost oleh SEMUA perusahaan. masih eksperimen
                             // Eksekusi query
                             $exec = mysqli_query($conn, $query);
 
