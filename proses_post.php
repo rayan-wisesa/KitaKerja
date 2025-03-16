@@ -39,10 +39,10 @@ if (isset($_POST['simpan'])) {
 // Proses penghapusan postingan
 if (isset($_POST['delete'])) {
     // Mengambil ID post dari parameter URL
-    $id = $_POST['pekerjaan_id'];
+    $id = $_POST['postID'];
 
     // Query untuk menghapus post berdasarkan ID
-    $exec = mysqli_query($conn, "DELETE FROM pekerjaan WHERE pekerjaan_id='$pekerjaan_id'");
+    $exec = mysqli_query($conn, "DELETE FROM pekerjaan WHERE pekerjaan_id='$id'");
 
     // Menyimpan notifikasi keberhasilan atau kegagalan ke dalam session
     if ($exec) {
