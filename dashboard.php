@@ -37,7 +37,8 @@ include '.includes/toast_notification.php';
                                             *
                                         FROM pekerjaan pekerjaan
                                         JOIN perusahaan perusahaan 
-                                        ON pekerjaan.perusahaan_id = perusahaan.perusahaan_id";
+                                        ON pekerjaan.perusahaan_id = perusahaan.perusahaan_id
+                                        where perusahaan.perusahaan_id = '$id'";
                             // Eksekusi query
                             $exec = mysqli_query($conn, $query);
 
