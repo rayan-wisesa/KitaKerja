@@ -2,12 +2,22 @@
 
 include("../config.php");
 
+$limit = 18;
+$page = isset($_GET['page'])?(int)$_GET['page'] : 1;
+$first_page = ($page>1) ? ($page * $limit) - $limit : 0;	
+
+$previous = $page - 1;
+$next = $page + 1;
 
 $jobs = mysqli_query($conn, "SELECT 
                                             *
                                         FROM pekerjaan pekerjaan
                                         JOIN perusahaan perusahaan 
                                         ON pekerjaan.perusahaan_id = perusahaan.perusahaan_id");
+
+$total_jobs = mysqli_num_rows($jobs);
+$total_pages = ceil($total_jobs / $limit);
+$number = $first_page+1;
 
 ?>
     <meta name="description" content="" />
@@ -29,7 +39,13 @@ $jobs = mysqli_query($conn, "SELECT
         <div class="content-wrapper">
         <div class="container-xxl flex-grow-1 container-p-y mt-5">
             <div class="row mb-5">
-            <?php foreach ($jobs as $j): ?>
+            <?php 
+            $data_jobs = mysqli_query($conn,"select  *
+                                        FROM pekerjaan pekerjaan
+                                        JOIN perusahaan perusahaan 
+                                        ON pekerjaan.perusahaan_id = perusahaan.perusahaan_id limit $first_page, $limit");
+            while($j = mysqli_fetch_array($data_jobs)){
+                ?>
                 <div class="col-md-6 col-lg-4 mb-3">
                     <div class="card h-100">
                         <div class="card-body">
@@ -42,10 +58,29 @@ $jobs = mysqli_query($conn, "SELECT
                         </div>
                     </div>
                 </div>
-                <?php endforeach; ?>
+                <?php
+            }
+            ?>
             </div>
             
         </div>
     </div>
+    <nav>
+			<ul class="pagination justify-content-center">
+				<li class="page-item">
+					<a class="page-link" <?php if($page > 1){ echo "href='?page=$previous'"; } ?>>Previous</a>
+				</li>
+				<?php 
+				for($x=1;$x<=$total_pages;$x++){
+					?> 
+					<li class="page-item"><a class="page-link" href="?page=<?php echo $x ?>"><?php echo $x; ?></a></li>
+					<?php
+				}
+				?>				
+				<li class="page-item">
+					<a  class="page-link" <?php if($page < $total_pages) { echo "href='?page=$next'"; } ?>>Next</a>
+				</li>
+			</ul>
+		</nav>
         
 
