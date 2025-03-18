@@ -20,7 +20,7 @@
         </div>
       <div class="mb-3">
         <label for="validationCustom02" class="form-label">Username</label>
-        <input id="validationCustom02" type="text" class="form-control" name="nama_pelamar"
+        <input id="validationCustom02" type="text" class="form-control" name="nama_perusahaan"
           placeholder="Masukkan username" autofocus required />
         <div class="invalid-feedback">
           Masukkan username yang anda inginkan.
