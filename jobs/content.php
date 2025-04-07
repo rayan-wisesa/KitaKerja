@@ -61,7 +61,7 @@ $number = $first_page + 1;
                                 <p><i class="bi bi-clipboard-check"></i> <?php echo $j['umur']; ?> Tahun</p>
                                 <p><i class="bi bi-geo-fill"></i> <?php echo $j['alamat']; ?></p>
                             </div>
-                            <a href="nyoba_doang.php?post_id=<?= $post['id_post']; ?>" class="btn btn-outline-primary">Lamar</a>
+                            <a href="melamar/melamar.php?pekerjaan_id=<?= $j['pekerjaan_id']; ?>" class="btn btn-outline-primary">Lamar</a>
                         </div>
                     </div>
                 </div>
