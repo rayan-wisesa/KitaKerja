@@ -10,7 +10,7 @@
     </div>
     <!-- /Logo -->
     <h4 class="mb-2">Selamat datang di kitakerja</h4>
-    <form class="mb-3 needs-validation" novalidate action="login.php" method="POST">
+    <form class="mb-3 needs-validation" novalidate action="login_auth.php" method="POST">
       <div class="mb-3">
         <label for="validationCustom01" class="form-label">Email</label>
         <input id="validationCustom01" type="text" class="form-control" name="email"
