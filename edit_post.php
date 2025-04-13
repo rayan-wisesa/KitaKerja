@@ -21,29 +21,45 @@ if ($result->num_rows > 0) {
             <div class="card mb-4">
                 <div class="card-body">
                     <form method="POST" action="proses_post.php" enctype="multipart/form-data">
-                        <input type="hidden" name="post_id" value="<?= $row['id_post']; ?>">
-                        
+                        <input type="hidden" name="pekerjaan_id" value="<?= $row['pekerjaan_id']; ?>">
+
                         <div class="mb-3">
-                            <label for="post_title" class="form-label">Judul Post</label>
-                            <input type="text" class="form-control" id="post_title" name="post_title" value="<?= htmlspecialchars($row['post_title']); ?>" required>
+                            <label for="nama_pekerjaan" class="form-label">Nama Pekerjaan</label>
+                            <input type="text" class="form-control" id="nama_pekerjaan" name="nama_pekerjaan" value="<?= htmlspecialchars($row['nama_pekerjaan']); ?>" required>
                         </div>
 
                         <div class="mb-3">
-                            <label for="fromFile" class="form-label">Unggah Gambar</label>
-                            <input class="form-control" type="file" id="fromFile" name="image_path" accept="image/*">
-                            
-                            <?php if (!empty($row['image_path'])): ?>
-                                <div class="mt-3">
-                                    <img src="<?= htmlspecialchars($row['image_path']); ?>" alt="Current Image" class="img-thumbnail" style="max-width: 200px;">
-                                </div>
-                            <?php endif; ?>
-                        </div>
-                        <div class="mb-3">
-                            <label for="content" class="form-label">Konten</label>
-                            <textarea class="form-control" id="content" name="content" required><?= htmlspecialchars($row['content']); ?></textarea>
+                            <label for="kisaran_gaji" class="form-label">Kisaran Gaji</label>
+                            <input type="text" class="form-control" id="kisaran_gaji" name="kisaran_gaji" value="<?= htmlspecialchars($row['kisaran_gaji']); ?>" required>
                         </div>
 
-                        <button type="submit" name="update" class="btn btn-primary">Update</button>
+                        <div class="mb-3">
+                            <label for="usia_minimal" class="form-label">Usia Minimal</label>
+                            <input type="number" class="form-control" id="usia_minimal" name="usia_minimal" value="<?= htmlspecialchars($row['usia_minimal']); ?>" required>
+                        </div>
+
+                        <div class="mb-3">
+                        <label for="tingkat_pendidikan" class="form-label">Tingkat Pendidikan</label>
+                    <select class="form-control" id="tingkat_pendidikan" name="tingkat_pendidikan" required>
+                    <option value="" selected disabled>Pilih salah satu</option>
+                                <option value="S3">Doktor (S3)</option>
+                                <option value="S2">Magister (S2)</option>
+                                <option value="S1">Sarjana (S1)</option>
+                                <option value="D1-D4">Diploma (D1 - D4)</option>
+                                <option value="SMA/SMK">SMA/SMK</option>
+                                <option value="SMP">SMP</option>
+                                <option value="SD">SD</option>
+                    </select>
+                        </div>
+
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="alamat" class="form-label">Alamat</label>
+                            <input type="text" class="form-control" id="alamat" name="alamat" value="<?= htmlspecialchars($row['alamat']); ?>" required>
+                        </div>
+
+                        <button type="submit" name="update" class="btn btn-primary">Simpan</button>
                     </form>
                 </div>
             </div>
