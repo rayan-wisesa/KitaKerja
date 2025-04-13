@@ -49,11 +49,9 @@ if ($result->num_rows > 0) {
                                 <option value="SMA/SMK">SMA/SMK</option>
                                 <option value="SMP">SMP</option>
                                 <option value="SD">SD</option>
+                            </select> 
                     </select>
                         </div>
-
-                        </div>
-
                         <div class="mb-3">
                             <label for="alamat" class="form-label">Alamat</label>
                             <input type="text" class="form-control" id="alamat" name="alamat" value="<?= htmlspecialchars($row['alamat']); ?>" required>
