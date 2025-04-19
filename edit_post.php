@@ -29,18 +29,18 @@ if ($result->num_rows > 0) {
                         </div>
 
                         <div class="mb-3">
-                            <label for="kisaran_gaji" class="form-label">Kisaran Gaji</label>
-                            <input type="text" class="form-control" id="kisaran_gaji" name="kisaran_gaji" value="<?= htmlspecialchars($row['kisaran_gaji']); ?>" required>
+                            <label for="gaji" class="form-label">Kisaran Gaji</label>
+                            <input type="text" class="form-control" id="gaji" name="gaji" value="<?= htmlspecialchars($row['gaji']); ?>" required>
                         </div>
 
                         <div class="mb-3">
-                            <label for="usia_minimal" class="form-label">Usia Minimal</label>
-                            <input type="number" class="form-control" id="usia_minimal" name="usia_minimal" value="<?= htmlspecialchars($row['usia_minimal']); ?>" required>
+                            <label for="umur" class="form-label">Usia Minimal</label>
+                            <input type="number" class="form-control" id="umur" name="umur" value="<?= htmlspecialchars($row['umur']); ?>" required>
                         </div>
 
                         <div class="mb-3">
-                        <label for="tingkat_pendidikan" class="form-label">Tingkat Pendidikan</label>
-                    <select class="form-control" id="tingkat_pendidikan" name="tingkat_pendidikan" required>
+                        <label for="pendidikan" class="form-label">Tingkat Pendidikan</label>
+                    <select class="form-control" id="pendidikan" name="pendidikan" required>
                     <option value="" selected disabled>Pilih salah satu</option>
                                 <option value="S3">Doktor (S3)</option>
                                 <option value="S2">Magister (S2)</option>
