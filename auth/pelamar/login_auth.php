@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"]== "POST") {
                 'type' => 'primary',
                 'message' =>'selamat datang kembali!'
             ];
-            header('location: ../../dashboard.php');
+            header('location: ../../jobs/index.php');
             exit();
         } else {
                 $_SESSION['notification'] = [
