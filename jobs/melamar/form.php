@@ -14,8 +14,8 @@ if (empty($_SESSION["nama_pelamar"])) {
         'type' => 'danger',
         'message' => 'Silahkan Login Terlebih Dahulu!'
     ];
-    //Header masih salah. link ke auth/perusahaan
-    header ('Location: ./auth/perusahaan/login.php');
+    //Jika user belum login, maka halaman akan pindah ke halaman login pelamar
+    header ('Location: ../../auth/pelamar/login.php');
     exit();
 }
 
