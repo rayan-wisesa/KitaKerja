@@ -4,22 +4,43 @@ session_start();
 
 $id = $_SESSION["perusahaan_id"];
 
-// Tambah pekerjaan
-    if (isset($_POST['simpan'])) {
-        $jobtitle   = $_POST["job_title"];
-        $gaji       = $_POST["gaji"];
-        $umur       = $_POST["umur"];
-        $pendidikan = $_POST["pendidikan"];
-        $alamat     = $_POST["alamat"];
-                $query = "INSERT INTO pekerjaan (nama_pekerjaan, perusahaan_id, gaji, umur, pendidikan, alamat, tanggal_post)
-                VALUES ('$jobtitle','$id','$gaji','$umur','$pendidikan','$alamat', NOW())";
-                header('location: dashboard.php');
-                    exit();
-                    }
-            // Hapus pekerjaan
-    if (isset($_POST['delete'])) {
-        $idPost = $_POST['postID'];
-        $exec = mysqli_query($conn, "DELETE FROM pekerjaan WHERE pekerjaan_id='$idPost'");
+// Menangani form untuk menambahkan postingan baru
+if (isset($_POST['simpan'])) {
+    // Mendapatkan data dari form
+    $jobtitle = $_POST["job_title"];
+    $gaji = $_POST["gaji"];
+    $umur = $_POST["umur"];
+    $pendidikan = $_POST["pendidikan"];
+    $alamat = $_POST["alamat"];
+
+    $query = "INSERT INTO pekerjaan (nama_pekerjaan, perusahaan_id, gaji, umur, pendidikan, alamat, tanggal_post) VALUES ('$jobtitle','$id', $gaji , $umur ,'$pendidikan','$alamat', NOW())";
+    if ($conn->query($query) === TRUE) {
+        // Notifikasi berhasil jika postingan berhasil ditambahkan
+        $_SESSION['notification'] = [
+            'type' => 'primary',
+            'message' => 'Post successfully added.'
+        ];
+    } else {
+        // Notifikasi error jika gagal menambahkan postingan
+        $_SESSION['notification'] = [
+            'type' => 'danger',
+            'message' => 'Error adding post: ' . $conn->error
+        ];
+    }
+
+    // Arahkan ke halaman dashboard setelah selesai
+    header('location: dashboard.php');
+    exit();
+}
+// Proses penghapusan postingan
+if (isset($_POST['delete'])) {
+    // Mengambil ID post dari parameter URL
+    $id = $_POST['postID'];
+
+    // Query untuk menghapus post berdasarkan ID
+    $exec = mysqli_query($conn, "DELETE FROM pekerjaan WHERE pekerjaan_id='$id'");
+
+    // Menyimpan notifikasi keberhasilan atau kegagalan ke dalam session
     if ($exec) {
         $_SESSION['notification'] = [
             'type' => 'primary', 'message' => 'Post successfully deleted.'];
@@ -30,33 +51,19 @@ $id = $_SESSION["perusahaan_id"];
     header('Location: dashboard.php');
     exit();
 }
-// Update postingan 
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_postingan'])) {
-    $postId     = $_POST['post_id'];
-    $postTitle  = $_POST['post_title'];
-    $content    = $_POST['content'];
-    $categoryId = $_POST['category_id'];
-    $imageDir   = "assets/img/uploads/";
-    if (!empty($_FILES['image_path']['name'])) {
-        $imageName = $_FILES['image_path']['name'];
-        $imagePath = $imageDir . $imageName;
-        move_uploaded_file($_FILES['image_path']['tmp_name'], $imagePath);
-        $queryOldImage = "SELECT image_path FROM posts WHERE id_post = $postId";
-        $resultOldImage = $conn->query($queryOldImage);
-        if ($resultOldImage->num_rows > 0) {
-            $oldImage = $resultOldImage->fetch_assoc()['image_path'];
-            if (file_exists($oldImage)) {
-                unlink($oldImage);
-            }
-        }
-    } else {
-        $queryPathQuery = "SELECT image_path FROM posts WHERE id_post = $postId";
-            $result = $conn->query($queryPathQuery);
-        if ($result->num_rows > 0) {
-            $imagePath = $result->fetch_assoc()['image_path'];
-        }
-    }
-    $queryUpdate = "UPDATE posts SET post_title='$postTitle', content='$content', category_id='$categoryId', image_path='$imagePath' WHERE id_post='$postId'";
+
+// Update pekerjaan
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update'])) {
+    // Menangkap data dari form
+    $id = $_POST['postID'];
+    $jobtitle = $_POST["nama_pekerjaan"];
+    $gaji = $_POST["gaji"];
+    $umur = $_POST["umur"];
+    $pendidikan = $_POST["pendidikan"];
+    $alamat = $_POST["alamat"];
+
+    $queryUpdate = "UPDATE pekerjaan SET nama_pekerjaan = '$jobtitle', gaji = '$gaji', umur = '$umur', pendidikan = '$pendidikan', alamat = '$alamat' WHERE pekerjaan_id='$id'";
+
     if ($conn->query($queryUpdate) === TRUE) {
         $_SESSION['notification'] = [
             'type' => 'success', 'message' => 'Postingan berhasil diperbarui.'];
