@@ -11,7 +11,7 @@
   <div class="menu-inner-shadow"></div>
   <ul class="menu-inner py-1">
     <!-- Dashboard -->
-    <li class="menu-item active">
+    <li class="menu-item">
       <a href="dashboard.php" class="menu-link">
         <i class="menu-icon tf-icons bx bx-home-circle"></i>
         <div data-i18n="Analytics">Dashboard</div>
@@ -19,7 +19,7 @@
     </li>
     
     <li class="menu-item">
-      <a href="posts.php" class="menu-link">
+      <a href="dashboard_lamaran.php" class="menu-link">
         <i class="menu-icon tf-icons bx bx-home-circle"></i>
         <div data-i18n="Analytics">Lamaran</div>
       </a>
