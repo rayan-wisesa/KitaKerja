@@ -19,6 +19,23 @@ $total_jobs = mysqli_num_rows($jobs);
 $total_pages = ceil($total_jobs / $limit);
 $number = $first_page + 1;
 
+session_start();
+$show_notification = false;
+$notification_type = "success"; 
+$notification_message = "";
+
+if (isset($_SESSION['notification'])) {
+    $show_notification = true;
+    
+    if (is_array($_SESSION['notification'])) {
+        $notification_type = $_SESSION['notification']['type'] ?? 'success';
+        $notification_message = $_SESSION['notification']['message'] ?? '';
+    } else {
+        $notification_message = $_SESSION['notification'];
+    }
+    unset($_SESSION['notification']);
+}
+
 ?>
 <meta name="description" content="" />
 <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico" />
@@ -39,6 +56,13 @@ $number = $first_page + 1;
 
 <div class="content-wrapper">
     <div class="container-xxl flex-grow-1 container-p-y mt-5">
+        <?php if ($show_notification): ?>
+            <div id="notification" class="alert alert-<?php echo $notification_type; ?> alert-dismissible fade show" role="alert">
+                <?php echo $notification_message; ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php endif; ?>
+        
         <div class="row mb-5">
             <?php
             $data_jobs = mysqli_query($conn, "select  *
@@ -93,3 +117,21 @@ $number = $first_page + 1;
         </li>
     </ul>
 </nav>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var notification = document.getElementById('notification');
+        if (notification) {
+            setTimeout(function() {
+                if (typeof bootstrap !== 'undefined' && bootstrap.Alert) {
+                    var bsAlert = new bootstrap.Alert(notification);
+                    bsAlert.close();
+                } else {
+                    notification.style.opacity = '0';
+                    setTimeout(function() {
+                        notification.style.display = 'none';
+                    }, 500);
+                }
+            }, 5000);
+        }
+    });
+</script>
