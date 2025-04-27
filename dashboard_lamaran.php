@@ -36,8 +36,11 @@ include '.includes/toast_notification.php';
                              posts, users, dan categories */
                             $query = "SELECT 
                                         *
-                                        FROM lamaran, pekerjaan, perusahaan, pelamar
-                                        where perusahaan.perusahaan_id = '$id'";
+                                        FROM lamaran
+                                        JOIN pekerjaan ON lamaran.pekerjaan_id = pekerjaan.pekerjaan_id
+                                        JOIN pelamar ON lamaran.pelamar_id = pelamar.pelamar_id
+                                        JOIN perusahaan ON pekerjaan.perusahaan_id = perusahaan.perusahaan_id
+                                        WHERE perusahaan.perusahaan_id = '$id'";
                             // Eksekusi query
                             $exec = mysqli_query($conn, $query);
 
@@ -58,13 +61,9 @@ include '.includes/toast_notification.php';
                                             </button>
                                             <!-- Menu dropdown -->
                                             <div class="dropdown-menu">
-                                                <!-- Pilihan Edit -->
-                                                <a href="edit_post.php?post_id=<?= $jobs['pekerjaan_id']; ?>" class="dropdown-item">
-                                                    <i class="bx bx-edit-alt me-2"></i> Edit
-                                                </a>
                                                 <!-- Pilihan Delete -->
                                                 <a href="#" class="dropdown-item" data-bs-toggle="modal"
-                                                    data-bs-target="#deletePost_<?= $jobs['pekerjaan_id']; ?>">
+                                                    data-bs-target="#deletePost_<?= $jobs['lamaran_id']; ?>">
                                                     <i class="bx bx-trash me-2"></i> Delete
                                                 </a>
                                             </div>
@@ -72,7 +71,7 @@ include '.includes/toast_notification.php';
                                     </td>
                                 </tr>
                                 <!-- Modal untuk Hapus Konten Blog -->
-                                <div class="modal fade" id="deletePost_<?= $jobs['pekerjaan_id']; ?>" tabindex="-1" aria-hidden="true">
+                                <div class="modal fade" id="deletePost_<?= $jobs['lamaran_id']; ?>" tabindex="-1" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -80,10 +79,10 @@ include '.includes/toast_notification.php';
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <form action="proses_post.php" method="POST">
+                                                <form action="delete_lamaran.php" method="POST">
                                                     <div>
                                                         <p>Tindakan ini tidak bisa dibatalkan.</p>
-                                                        <input type="hidden" name="postID" value="<?= $jobs['pekerjaan_id']; ?>">
+                                                        <input type="hidden" name="postID" value="<?= $jobs['lamaran_id']; ?>">
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
