@@ -1,38 +1,49 @@
 <?php
-
+// Konfigurasi dan koneksi database
 include("../config.php");
 
-$limit = 18;
+// Konfigurasi pagination
+$limit = 18;// Batasan jumlah data per halaman
+
+// Menentukan halaman saat ini dari parameter GET
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $first_page = ($page > 1) ? ($page * $limit) - $limit : 0;
 
+// Menghitung halaman sebelum dan sesudah untuk navigasi
 $previous = $page - 1;
 $next = $page + 1;
 
+// Query untuk mengambil semua data pekerjaan dengan perusahaan
 $jobs = mysqli_query($conn, "SELECT 
                                             *
                                         FROM pekerjaan pekerjaan
                                         JOIN perusahaan perusahaan 
                                         ON pekerjaan.perusahaan_id = perusahaan.perusahaan_id");
 
+// Menghitung jumlah total pekerjaan dan halaman
 $total_jobs = mysqli_num_rows($jobs);
 $total_pages = ceil($total_jobs / $limit);
 $number = $first_page + 1;
 
+// Membuat notifikasi
 session_start();
 $show_notification = false;
 $notification_type = "success"; 
 $notification_message = "";
 
+// Mengecek apakah ada notifikasi dalam session
 if (isset($_SESSION['notification'])) {
     $show_notification = true;
     
+        // Memeriksa apakah notifikasi dalam bentuk array
     if (is_array($_SESSION['notification'])) {
         $notification_type = $_SESSION['notification']['type'] ?? 'success';
         $notification_message = $_SESSION['notification']['message'] ?? '';
     } else {
+         // Jika notifikasi hanya berupa string pesan
         $notification_message = $_SESSION['notification'];
     }
+     // Menghapus notifikasi dari session setelah diambil
     unset($_SESSION['notification']);
 }
 
@@ -56,6 +67,7 @@ if (isset($_SESSION['notification'])) {
 
 <div class="content-wrapper">
     <div class="container-xxl flex-grow-1 container-p-y mt-5">
+        <!-- Menampilkan notifikasi jika ada -->
         <?php if ($show_notification): ?>
             <div id="notification" class="alert alert-<?php echo $notification_type; ?> alert-dismissible fade show" role="alert">
                 <?php echo $notification_message; ?>
@@ -65,10 +77,12 @@ if (isset($_SESSION['notification'])) {
         
         <div class="row mb-5">
             <?php
+            // Query untuk mengambil data pekerjaan dengan pagination
             $data_jobs = mysqli_query($conn, "select  *
                                         FROM pekerjaan pekerjaan
                                         JOIN perusahaan perusahaan 
                                         ON pekerjaan.perusahaan_id = perusahaan.perusahaan_id limit $first_page, $limit");
+            // Menampilkan setiap pekerjaan dalam bentuk kartu
             while ($j = mysqli_fetch_array($data_jobs)) {
             ?>
                 <div class="col-md-6 col-lg-4 mb-3">
@@ -93,9 +107,9 @@ if (isset($_SESSION['notification'])) {
             }
             ?>
         </div>
-
     </div>
 </div>
+<!-- Membuat navigasi pagination -->
 <nav>
     <ul class="pagination justify-content-center">
         <li class="page-item">
@@ -118,6 +132,7 @@ if (isset($_SESSION['notification'])) {
     </ul>
 </nav>
 <script>
+    // Script untuk menghilangkan notifikasi secara otomatis setelah 5 detik
     document.addEventListener('DOMContentLoaded', function() {
         var notification = document.getElementById('notification');
         if (notification) {
@@ -126,6 +141,7 @@ if (isset($_SESSION['notification'])) {
                     var bsAlert = new bootstrap.Alert(notification);
                     bsAlert.close();
                 } else {
+                    // Fallback jika bootstrap tidak tersedia
                     notification.style.opacity = '0';
                     setTimeout(function() {
                         notification.style.display = 'none';
