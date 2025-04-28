@@ -1,11 +1,7 @@
 <?php
-// Menghubungkan file konfigurasi database
 include 'config.php';
-
-// Memulai sesi PHP
 session_start();
 
-// Mendapatkan ID pengguna dari sesi
 $id = $_SESSION["perusahaan_id"];
 
 // Menangani form untuk menambahkan postingan baru
@@ -17,20 +13,20 @@ if (isset($_POST['simpan'])) {
     $pendidikan = $_POST["pendidikan"];
     $alamat = $_POST["alamat"];
 
-        $query = "INSERT INTO pekerjaan (nama_pekerjaan, perusahaan_id, gaji, umur, pendidikan, alamat, tanggal_post) VALUES ('$jobtitle','$id', $gaji , $umur ,'$pendidikan','$alamat', NOW())";
-        if ($conn->query($query) === TRUE) {
-            // Notifikasi berhasil jika postingan berhasil ditambahkan
-            $_SESSION['notification'] = [
-                'type' => 'primary',
-                'message' => 'Post successfully added.'
-            ];
-        } else {
-            // Notifikasi error jika gagal menambahkan postingan
-            $_SESSION['notification'] = [
-                'type' => 'danger',
-                'message' => 'Error adding post: ' . $conn->error
-            ];
-        }
+    $query = "INSERT INTO pekerjaan (nama_pekerjaan, perusahaan_id, gaji, umur, pendidikan, alamat, tanggal_post) VALUES ('$jobtitle','$id', $gaji , $umur ,'$pendidikan','$alamat', NOW())";
+    if ($conn->query($query) === TRUE) {
+        // Notifikasi berhasil jika postingan berhasil ditambahkan
+        $_SESSION['notification'] = [
+            'type' => 'primary',
+            'message' => 'Post successfully added.'
+        ];
+    } else {
+        // Notifikasi error jika gagal menambahkan postingan
+        $_SESSION['notification'] = [
+            'type' => 'danger',
+            'message' => 'Error adding post: ' . $conn->error
+        ];
+    }
 
     // Arahkan ke halaman dashboard setelah selesai
     header('location: dashboard.php');
@@ -47,73 +43,58 @@ if (isset($_POST['delete'])) {
     // Menyimpan notifikasi keberhasilan atau kegagalan ke dalam session
     if ($exec) {
         $_SESSION['notification'] = [
-            'type' => 'primary',
-            'message' => 'Post succesfully deleted.'
-        ];
+            'type' => 'primary', 'message' => 'Post successfully deleted.'];
     } else {
-        $SESSION['notification'] = [
-            'type' => 'danger',
-            'message' => 'Error deleting post: ' . mysqli_error($conn)
-        ];
+        $_SESSION['notification'] = [
+            'type' => 'danger', 'message' => 'Error deleting post: ' . mysqli_error($conn)];
     }
-
-    // Arahkan ke halaman dashboard
     header('Location: dashboard.php');
     exit();
 }
 
-// Menangani pembaruan data postingan
+// Update pekerjaan
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update'])) {
     // Menangkap data dari form
-    $postId = $_POST['post_id'];
-    $postTitle = $_POST['post_title'];
-    $content = $_POST['content'];
-    $categoryId = $_POST['category_id'];
-    $imageDir = "assets/img/uploads/"; // Direktori penyimpanan gambar
-    // Periksa apakah file gambar baru diunggah
-    if (!empty($_FILES['image_path']['name'])) {
-        $imageName = $_FILES['image_path']['name'];
-        $imagePath = $imageDir . $imageName;
+    $id = $_POST['postID'];
+    $jobtitle = $_POST["nama_pekerjaan"];
+    $gaji = $_POST["gaji"];
+    $umur = $_POST["umur"];
+    $pendidikan = $_POST["pendidikan"];
+    $alamat = $_POST["alamat"];
 
-        // Pindahkan file baru ke direktori tujuan
-        move_uploaded_file($_FILES['image_path']['tmp_name'], $imagePath);
-
-        // Hapus gambar lama
-        $queryOldImage = "SELECT image_path FROM posts WHERE id_post = $postId";
-        $resultOldImage = $conn->query($queryOldImage);
-        if ($resultOldImage->num_rows > 0) {
-            $oldImage = $resultOldImage->fetch_assoc()['image_path'];
-            if (file_exists($oldImage)) { // Menghapus file lama
-                unlink($oldImage);
-            }
-        }
-    } else {
-        // Jika tidak ada file baru, gunakan gambar lama
-        $queryPathQuery = "SELECT image_path FROM posts WHERE id_post = $postId";
-        $result = $conn->query($queryPathQuery);
-        if ($result->num_rows > 0) {
-            $imagePath = $result->fetch_assoc()['image_path'];
-        }
-    }
-
-    // Update data post dengan atau tanpa gambar
-    $queryUpdate = "UPDATE posts SET post_title = '$postTitle', 
-content = '$content', category_id = '$categoryId', 
-image_path = '$imagePath' WHERE id_post = '$postId'";
+    $queryUpdate = "UPDATE pekerjaan SET nama_pekerjaan = '$jobtitle', gaji = '$gaji', umur = '$umur', pendidikan = '$pendidikan', alamat = '$alamat' WHERE pekerjaan_id='$id'";
 
     if ($conn->query($queryUpdate) === TRUE) {
         $_SESSION['notification'] = [
-            'type' => 'success',
-            'message' => 'Postingan berhasil diperbarui.'
-        ];
+            'type' => 'success', 'message' => 'Postingan berhasil diperbarui.'];
     } else {
         $_SESSION['notification'] = [
-            'type' => 'danger',
-            'message' => 'Gagal memperbarui postingan.'
-        ];
+            'type' => 'danger', 'message' => 'Gagal memperbarui postingan.'];
     }
-
-    // Arahkan ke halaman dashboard
     header('Location: dashboard.php');
     exit();
 }
+// Update pekerjaan
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_pekerjaan'])) {
+    $pekerjaanId = $_POST['pekerjaan_id'];
+    $jobtitle    = $_POST['nama_pekerjaan'];
+    $gaji        = $_POST['gaji'];
+    $umur        = $_POST['umur'];
+    $pendidikan  = $_POST['pendidikan'];
+    $alamat      = $_POST['alamat'];
+    $queryUpdatePekerjaan = "UPDATE pekerjaan SET 
+                                nama_pekerjaan = '$jobtitle', 
+                                gaji = '$gaji', 
+                                umur = '$umur', 
+                                pendidikan = '$pendidikan', 
+                                alamat = '$alamat' 
+                                WHERE pekerjaan_id = '$pekerjaanId'";
+    if ($conn->query($queryUpdatePekerjaan) === TRUE) {
+        $_SESSION['notification'] = ['type' => 'success', 'message' => 'Data pekerjaan berhasil diperbarui.'];
+    } else {
+        $_SESSION['notification'] = ['type' => 'danger', 'message' => 'Gagal memperbarui pekerjaan: ' . $conn->error];
+    }
+    header('Location: dashboard.php');
+    exit();
+}
+?>

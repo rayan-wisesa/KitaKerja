@@ -56,8 +56,8 @@ if ($result->num_rows > 0) {
                             <label for="alamat" class="form-label">Alamat</label>
                             <input type="text" class="form-control" id="alamat" name="alamat" value="<?= htmlspecialchars($row['alamat']); ?>" required>
                         </div>
-
                         <button type="submit" name="update" class="btn btn-primary">Simpan</button>
+                        <input type="hidden" name="postID" value="<?= $postId; ?>">
                     </form>
                 </div>
             </div>
