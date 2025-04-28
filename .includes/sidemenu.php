@@ -39,11 +39,7 @@
             <div data-i18n="Basic Inputs">Post Baru</div>
           </a>
         </li>
-        <li class="menu-item">
-          <a href="kategori.php" class="menu-link">
-            <div data-i18n="Input groups">Kategori</div>
-          </a>
-        </li>
+        
       </ul>
     </li>
     
