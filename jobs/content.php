@@ -2,13 +2,16 @@
 
 include("../config.php");
 
+// Menentukan batas pekerjaan yang akan ditampilkan
 $limit = 18;
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $first_page = ($page > 1) ? ($page * $limit) - $limit : 0;
 
+// Variabel untuk berpindah halaman
 $previous = $page - 1;
 $next = $page + 1;
 
+// Query untuk mengambil data pekerjaan beserta nama perusahaan 
 $jobs = mysqli_query($conn, "SELECT 
                                             *
                                         FROM pekerjaan pekerjaan
@@ -19,7 +22,9 @@ $total_jobs = mysqli_num_rows($jobs);
 $total_pages = ceil($total_jobs / $limit);
 $number = $first_page + 1;
 
+// Memulai sesi untuk notifikasi
 session_start();
+
 $show_notification = false;
 $notification_type = "success"; 
 $notification_message = "";
@@ -55,6 +60,7 @@ if (isset($_SESSION['notification'])) {
 </head>
 
 <div class="content-wrapper">
+    <!-- Menampilkan jobs -->
     <div class="container-xxl flex-grow-1 container-p-y mt-5">
         <?php if ($show_notification): ?>
             <div id="notification" class="alert alert-<?php echo $notification_type; ?> alert-dismissible fade show" role="alert">
@@ -65,6 +71,8 @@ if (isset($_SESSION['notification'])) {
         
         <div class="row mb-5">
             <?php
+            // Variabel untuk menyimpan data dari database
+            // Query akan mengambil data dari tabel pekerjaan, dan perusahaan
             $data_jobs = mysqli_query($conn, "select  *
                                         FROM pekerjaan pekerjaan
                                         JOIN perusahaan perusahaan 
@@ -72,6 +80,7 @@ if (isset($_SESSION['notification'])) {
             while ($j = mysqli_fetch_array($data_jobs)) {
             ?>
                 <div class="col-md-6 col-lg-4 mb-3">
+                    <!-- Card untuk masing-masing jobs yang akan ditampilkan -->
                     <div class="card h-100">
                         <div class="card-body">
                             <h5 class="card-title"><b><?php echo $j['nama_pekerjaan']; ?></b></h5>
@@ -85,6 +94,7 @@ if (isset($_SESSION['notification'])) {
                                 <p><i class="bi bi-clipboard-check"></i> <?php echo $j['umur']; ?> Tahun</p>
                                 <p><i class="bi bi-geo-fill"></i> <?php echo $j['alamat']; ?></p>
                             </div>
+                            <!-- Button untuk redirect user ke halaman untuk melamar, dengan membawa ID pekerjaan yang akan di proses di proses melamar -->
                             <a href="melamar/melamar.php?pekerjaan_id=<?= $j['pekerjaan_id']; ?>" class="btn btn-outline-primary">Lamar</a>
                         </div>
                     </div>
@@ -97,6 +107,7 @@ if (isset($_SESSION['notification'])) {
     </div>
 </div>
 <nav>
+    <!-- Tombol untuk maju-mundur halaman -->
     <ul class="pagination justify-content-center">
         <li class="page-item">
             <a class="page-link" <?php if ($page > 1) {
