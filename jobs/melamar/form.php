@@ -19,8 +19,11 @@ if (empty($_SESSION["nama_pelamar"])) {
     exit();
 }
 
+// Mengambil ID dari parameter URL, yang dimana berasal dari halaman content.php setelah user menekan salah satu tombol dari pekerjaan
 $postIdToForm = $_GET['pekerjaan_id'];
 
+// Variabel untuk menyimpan data yang diambil dari query
+// Query akan mengambil data dari tabel pekerjaan, yang dimana data akan diambil sesuai dengan ID yang telah diambil dari parameter URL
 $jobs = mysqli_query($conn, "SELECT *
                                         FROM pekerjaan
                                         WHERE pekerjaan_id = $postIdToForm ");
@@ -47,6 +50,7 @@ $j = mysqli_fetch_array($jobs)
 <div class="container-xxl mt-5">
   <div class="content-wrapper m-5 p-5">
   <div class="col-xxl">
+    <!-- Form melamar -->
                   <div class="card mb-4">
                     <div class="card-header d-flex align-items-center justify-content-between">
                     </div>
@@ -56,6 +60,7 @@ $j = mysqli_fetch_array($jobs)
                           <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Nama Lengkap</label>
                           <div class="col-sm-10">
                             <div class="input-group input-group-merge">
+                              <!-- Input nama. readonly karena nama diambil dari session user -->
                               <input readonly
                                 type="text"
                                 class="form-control"
@@ -72,6 +77,7 @@ $j = mysqli_fetch_array($jobs)
                           <label class="col-sm-2 col-form-label" for="basic-icon-default-company">Pekerjaan</label>
                           <div class="col-sm-10">
                             <div class="input-group input-group-merge">
+                              <!-- Input untuk nama pekerjaan. readonly karena mengambil nama pekerjaan dari tabel sesuai ID yang diambil dari parameter. -->
                               <input
                                 type="text"
                                 readonly
@@ -89,6 +95,7 @@ $j = mysqli_fetch_array($jobs)
                           <label class="col-sm-2 col-form-label" for="basic-icon-default-email">Email</label>
                           <div class="col-sm-10">
                             <div class="input-group input-group-merge">
+                              <!-- Input email. readonly karena email diambil dari session user -->
                               <input
                                 type="text"
                                 readonly
@@ -109,6 +116,7 @@ $j = mysqli_fetch_array($jobs)
                               <span id="basic-icon-default-phone2" class="input-group-text"
                                 ><i class="bx bx-phone"></i
                               ></span>
+                              <!-- Input nomor HP -->
                               <input
                                 type="text"
                                 name="no_hp"
@@ -128,6 +136,7 @@ $j = mysqli_fetch_array($jobs)
                               <span id="basic-icon-default-message2" class="input-group-text"
                                 ><i class="bx bx-comment"></i
                               ></span>
+                              <!-- Input pesan -->
                               <textarea
                                 id="basic-icon-default-message"
                                 name="pesan"
@@ -140,6 +149,7 @@ $j = mysqli_fetch_array($jobs)
                         </div>
                         <div class="row justify-content-end">
                           <div class="col-sm-10">
+                            <!-- Button untuk mengirim data dari form untuk diproses -->
                             <button type="submit" class="btn btn-primary" name="kirim">Kirim</button>
                             <input type="hidden" name="pekerjaan_id" value="<?= $postIdToForm; ?>">
                           </div>
@@ -151,6 +161,7 @@ $j = mysqli_fetch_array($jobs)
   </div>
 </div>
 
+<!-- Script untuk validasi form -->
 <script>
   (() => {
     'use strict'

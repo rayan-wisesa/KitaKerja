@@ -32,7 +32,7 @@ include '.includes/toast_notification.php';
                             <?php
                             $index = 1; // Variabel untuk nomor urut
                             /* Query untuk mengambil data dari tabel 
-                             posts, users, dan categories */
+                             lamaran, pekerjaan, pelamar, dan perusahaan */
                             $query = "SELECT 
                                             *
                                         FROM pekerjaan pekerjaan
@@ -71,7 +71,7 @@ include '.includes/toast_notification.php';
                                         </div>
                                     </td>
                                 </tr>
-                                <!-- Modal untuk Hapus Konten Blog -->
+                                <!-- Modal untuk Hapus Konten Pekerjaan -->
                                 <div class="modal fade" id="deletePost_<?= $jobs['pekerjaan_id']; ?>" tabindex="-1" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">

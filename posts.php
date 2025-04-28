@@ -5,22 +5,23 @@ include '.includes/header.php';
 <div class="container-xxl flex-grow-1 container p-y">
     <!-- Judul Halaman -->
     <div class="row">
-        <!-- Form unyuk menambahkan postingan baru -->
+        <!-- Form untuk menambahkan pekerjaan baru -->
         <div class="col-md-10">
             <div class="card-mb-4">
                 <div class="card-body">
                     <form method="POST" action="proses_post.php"
                         enctype="multipart/form-data">
-                        <!-- Input untuk judul postingan -->
+                        <!-- Input untuk nama pekerjaan -->
                         <div class="mb-3">
                             <label for="job_title" class="form-label">Nama Pekerjaan</label>
                             <input type="text" class="form-control" name="job_title" required>
                         </div>
+                        <!-- Input untuk kisaran -->
                         <div class="mb-3">
                             <label for="gaji" class="form-label">Kisaran Gaji</label>
                             <input type="text" class="form-control" name="gaji" required>
                         </div>
-                        <!-- Textarea untuk konten postingan -->
+                        <!-- Input untuk usia minimal -->
                         <div class="mb-3">
                             <label for="umur" class="form-label">Usia Minimal</label>
                             <input type="number" class="form-control" name="umur" min="1" max="100" required>
@@ -28,7 +29,7 @@ include '.includes/header.php';
                         <div class="mb-3">
                         <label for="pendidikan" class="form-label">Tingkat Pendidikan</label>
                             <select class="form-select" name="pendidikan" required>
-                                <!-- Mengambil data kategori dari database untuk mengisi opsi dropdown -->
+                                <!-- Memilih pendidikan untuk mengisi opsi dropdown -->
                                 <option value="" selected disabled>Pilih salah satu</option>
                                 <option value="S3">Doktor (S3)</option>
                                 <option value="S2">Magister (S2)</option>

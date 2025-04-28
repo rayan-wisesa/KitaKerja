@@ -10,7 +10,7 @@ $id = $_SESSION["pelamar_id"];
 $name = $_SESSION["nama_pelamar"];
 $email = $_SESSION["email"];
 
-// Menangani form untuk menambahkan postingan baru
+// Menangani form untuk menambahkan lamaran
 if (isset($_POST['kirim'])) {
     // Mendapatkan data dari form
     $pekerjaan_id = $_POST["pekerjaan_id"];
