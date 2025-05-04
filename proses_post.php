@@ -74,27 +74,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update'])) {
     header('Location: dashboard.php');
     exit();
 }
-// Update pekerjaan
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_pekerjaan'])) {
-    $pekerjaanId = $_POST['pekerjaan_id'];
-    $jobtitle    = $_POST['nama_pekerjaan'];
-    $gaji        = $_POST['gaji'];
-    $umur        = $_POST['umur'];
-    $pendidikan  = $_POST['pendidikan'];
-    $alamat      = $_POST['alamat'];
-    $queryUpdatePekerjaan = "UPDATE pekerjaan SET 
-                                nama_pekerjaan = '$jobtitle', 
-                                gaji = '$gaji', 
-                                umur = '$umur', 
-                                pendidikan = '$pendidikan', 
-                                alamat = '$alamat' 
-                                WHERE pekerjaan_id = '$pekerjaanId'";
-    if ($conn->query($queryUpdatePekerjaan) === TRUE) {
-        $_SESSION['notification'] = ['type' => 'success', 'message' => 'Data pekerjaan berhasil diperbarui.'];
-    } else {
-        $_SESSION['notification'] = ['type' => 'danger', 'message' => 'Gagal memperbarui pekerjaan: ' . $conn->error];
-    }
-    header('Location: dashboard.php');
-    exit();
-}
-?>

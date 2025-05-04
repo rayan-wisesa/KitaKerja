@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -16,15 +17,25 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 </head>
+
 <body>
   <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top">
-    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
-      <a href="index.php" class="logo d-flex align-items-center">
+    <div class="container-fluid container-xl d-flex">
+      <div href="index.php" class="logo d-flex align-items-center me-auto px-2">
         <img src="assets/img/logo.png" alt="">
         <span>KitaKerja</span>
-      </a>
-      <a class="ml-5">login</a>
+</div>
+      <div class="px-2">
+        <button href="index.php" class="btn btn-primary">
+          <span>Login</span>
+        </button>
+</div>
+      <div class="px-2">
+        <button href="index.php" class="btn btn-primary">
+          <span>Logout</span>
+        </button>
+      </div>
       <nav id="navbar" class="navbar">
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
