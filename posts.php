@@ -45,7 +45,7 @@ include '.includes/header.php';
                             <input type="text" class="form-control" name="alamat" required>
                         </div>
                         <!-- Tombol Submit -->
-                        <button type="submit" name="simpan" class="btn btn-primary">Simpan</button>
+                        <button type="submit" name="simpan" class="btn btn-primary">Kirim</button>
                     </form>
                 </div>
             </div>

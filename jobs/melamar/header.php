@@ -24,7 +24,6 @@
         <img src="assets/img/logo.png" alt="">
         <span>KitaKerja</span>
       </a>
-      <a class="ml-5">login</a>
       <nav id="navbar" class="navbar">
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
