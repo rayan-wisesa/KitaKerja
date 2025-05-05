@@ -6,10 +6,10 @@
       <div class="row gy-4">
         <div class="col-lg-5 col-md-12 footer-info">
           <a href="index.html" class="logo d-flex align-items-center">
-            <img src="../assets/img/logo.png" alt="">
+            <img src="assets/img/logo.png" alt="">
             <span>KitaKerja</span>
           </a>
-          <p>Aplikasi blog berbasis PHP native yang dirancang untuk memudahkan pengguna dalam membuat dan mengelola konten blog.</p>
+          <p>Aplikasi jobs berbasis PHP native yang dirancang untuk memudahkan pengguna dalam membuat dan mengelola konten pekerjaan.</p>
           <div class="social-links mt-3">
             <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
             <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
@@ -19,7 +19,7 @@
         </div>
         <div class="col-lg-3 col-md-12 footer-contact text-md-end">
           <h4>Contact Us</h4>
-          <p>Jalan Nusantara KM. 14 <br>Tanjungpinang, Riau Islands<br>Indonesia</p>
+          <p>Kelompok 7 <br>XI RPL 1<br>SMKN 4 Tanjungpinang</p>
         </div>
       </div>
     </div>
@@ -30,18 +30,18 @@
       <script>
         document.write(new Date().getFullYear());
         </script>
-        <a href="#" target="_blank" class="footer-link fw-bolder">SMKN 4 Tanjungpinang</a>.
+        <a href="#" target="_blank" class="footer-link fw-bolder">KitaKerja</a>.
         All rights reserved.
     </div>
   </div>
 </footer><!-- End Footer -->
 <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 <!-- Vendor JS Files -->
-<script src="../assets/vendor/aos/aos.js"></script>
-<script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
-<script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="assets/vendor/aos/aos.js"></script>
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
 <!-- Template Main JS File -->
-<script src="../assets/js/main.js"></script>
+<script src="assets/js/main.js"></script>
 </body>
 </html>
