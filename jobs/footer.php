@@ -9,7 +9,7 @@
             <img src="assets/img/logo.png" alt="">
             <span>KitaKerja</span>
           </a>
-          <p>Aplikasi blog berbasis PHP native yang dirancang untuk memudahkan pengguna dalam membuat dan mengelola konten blog.</p>
+          <p>Aplikasi jobs berbasis PHP native yang dirancang untuk memudahkan pengguna dalam membuat dan mengelola konten pekerjaan.</p>
           <div class="social-links mt-3">
             <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
             <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
@@ -19,7 +19,7 @@
         </div>
         <div class="col-lg-3 col-md-12 footer-contact text-md-end">
           <h4>Contact Us</h4>
-          <p>Jalan Nusantara KM. 14 <br>Tanjungpinang, Riau Islands<br>Indonesia</p>
+          <p>Kelompok 7 <br>XI RPL 1<br>SMKN 4 Tanjungpinang</p>
         </div>
       </div>
     </div>
@@ -30,7 +30,7 @@
       <script>
         document.write(new Date().getFullYear());
         </script>
-        <a href="#" target="_blank" class="footer-link fw-bolder">SMKN 4 Tanjungpinang</a>.
+        <a href="#" target="_blank" class="footer-link fw-bolder">KitaKerja</a>.
         All rights reserved.
     </div>
   </div>
